@@ -2,10 +2,15 @@ import Header from '../components/Header'
 import '../styles/globals.css'
 import Footer from '../components/footer'
 import Links from "../components/Links"
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
+     <Head>
+        <title>Abd Blogs</title>
+     
+      </Head>
       <Header />
     <Links/>
       <main className='container'>

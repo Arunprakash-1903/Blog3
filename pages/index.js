@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import Head from 'next/head'
 import Post from '../components/Post'
 import { sortByDate } from '../utils'
 import NotFoundPage from '../components/NotFound'
@@ -36,10 +35,7 @@ export default function Home({ posts }) {
  
   return (
     <div>
-      <Head>
-        <title>Abd Blogs</title>
      
-      </Head>
   
     <div className="search__conantiner">
             <input className="search_input" placeholder="Search... "  value={query} onChange={(e)=>setQuery(e.target.value)} type="text" />
