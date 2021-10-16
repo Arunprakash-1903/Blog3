@@ -139,6 +139,7 @@ ol {
   position:sticky;
   margin-top: 100px;
   margin-bottom: -200px;
+  padding: 10px 0px;
 }
 .footer>p{
   font-size: 16px;
