@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  scroll-behavior:smooth;
+  transition: all;
+  transition-duration: 1.9s;
+
+}
+
+p {
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index: 100;
+  background: steelblue;
+  color: #fff;
+  padding: 5px;
+  margin-bottom: 40px;
+ 
+}
+
+header a {
+  color: #fff;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: steelblue;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.btn-back {
+  background: #f4f4f4;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-page {
+  padding: 15px 30px;
+}
+
+.post-title {
+  margin: 10px 0;
+}
+
+.post-date {
+  background: #f4f4f4;
+  margin-bottom: 20px;
+  padding: 3px 10px;
+}
+
+.post-body ul,
+ol {
+  font-size: 110%;
+  line-height: 2.3;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.post-body pre {
+  background: #f4f4f4;
+  padding: 20px;
+  margin: 20px 0;
+  line-height: 2.3;
+}
+
+@media (max-width: 500px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}
+.footer{
+  width: 100%;
+  height: 40px;
+  background-color: rgba(51, 51, 51, 0.397);
+  color:white;
+  font-size: 16px;
+  text-align: center;
+}
+.footer>p{
+  font-size: 16px;
+}
+.Link_container{
+  width:max-content;
+  height: max-content;
+  position: absolute;
+  z-index: 0;
+  top: 100px;
+  left:0px
+  
+}
+.link{
+  border-radius: 200px;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 10px;
+ 
+  
+}
+.inta_logo{
+  width:35px;
+  height:35px;
+  border-radius: 200px;
+  margin-left: 4px; 
+}
+.link:hover{
+  transition: all;
+  transition-duration: .5s;
+  transform: translateX(15px);
+}
+.link:not(:hover){
+  transition: all;
+  transition-duration: .5s;
+  transform: translateX(-3px);
+}
+.search__conantiner{
+  display: flex;
+justify-content: space-between;
+  margin: 10px;
+}
+.search_input{
+
+
+width: 700px;
+height: 40px;
+margin-right: 10px;
+border:none;
+background-color:#efefef;
+border-radius: 10px;
+padding: 10px;
+padding-left: 20px;
+
+
+}
+.search_button{
+  background-color:  steelblue;
+  width: 100px;
+  height: 40px;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+.search_input:focus{
+  outline:none;
+  border: 2px solid rgba(70, 131, 180, 0.527);
+}
+.search_button:hover{
+  transform: all;
+  transition-duration: .5s;
+ background-color:rgb(40, 96, 143); ;
+}
+.button_container{
+
+  background-color: steelblue;
+  color: white;
+  font-size: 20px;
+  border-radius: 200px;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 20px;
+  padding: 10px;
+  bottom: 50px;
+  z-index: 100;
+  margin-bottom: 10px;
+  
+}
+.button_top{
+  position:absolute;
+  top:15px;
+  left:15px;
+}
+.Arrow{
+  color:white;
+  width: 30px;
+  height: 30px;
+  
+ 
+  
+}
+@keyframes popIn{
+  0%{
+  
+   opacity: 0;
+   scale: 0;
+
+  }
+  100%{
+    opacity: 1;
+   
+    scale: 1;
+
+  }
+}
+.animate{
+  
+  animation: popIn 1s ease-in ;
+
+  transition: all;
+ visibility: visible;
+ 
+}
+@media (max-width: 500px) {
+  .Link_container{
+    display: none;
+  }
+  .button_container{
+  display: none;
+}
+
+}
+.button_container:hover{
+background-color:rgb(26, 105, 170);
+
+}
+.not-found_container{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  height: 100vh !important;
+  text-align: left !important;
+}
+.not-found_text{
+  font-size: 20px !important;
+  color: gray !important;
+  font-weight: 600 !important;
+  margin-left: 210px;
+}
+
