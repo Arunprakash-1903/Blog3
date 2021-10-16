@@ -11,6 +11,10 @@ export default function PostPage({
 }) {
   return (
     <>
+    <Head>
+
+      <title>Abd Blogs | {slug}</title>
+    </Head>
       <Link href='/'>
         <a className='btn btn-back'>Go Back</a>
       </Link>
