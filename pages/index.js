@@ -37,7 +37,7 @@ export default function Home({ posts }) {
   return (
     <div>
       <Head>
-        <title>Dev Blog</title>
+        <title>Abd Blogs</title>
      
       </Head>
   
