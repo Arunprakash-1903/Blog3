@@ -47,6 +47,8 @@ header {
 
 header a {
   color: #fff;
+  cursor: pointer;
+ 
 }
 
 .container {
