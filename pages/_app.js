@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
      <Head>
-        <title>Abd Blogs</title>
+        <title>Dev Blogs</title>
      
       </Head>
       <Header />

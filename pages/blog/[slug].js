@@ -13,7 +13,7 @@ export default function PostPage({
     <>
     <Head>
 
-      <title>Abd Blogs</title>
+      <title>Dev Blogs</title>
     </Head>
       <Link href='/'>
         <a className='btn btn-back'>Go Back</a>
