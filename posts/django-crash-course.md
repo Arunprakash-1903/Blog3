@@ -1,6 +1,6 @@
 ---
 title: 'Django Crash Course'
-date: 'March 5, 2021'
+
 excerpt: 'Django is a very powerful, high level Python framework for building web applications'
 cover_image: '/images/posts/img3.jpg'
 ---
@@ -38,6 +38,8 @@ sceleratos laudis egere retroque. Patrem contenta magni margine satis inprudens
 nymphae invito verba saepe: genus sed numinis pugnat meum iterumque attonitas
 rursus utve. Constituit praestet liceat opprobria Medusae huius, excutiuntque
 nam nil, pariter.
+
+    
 
 Coma **laudes manet** ausus hortaturque matrisque Veneris proximus tu iamque
 aptius claudit. Tmolus tetigere iussos animumque quid poplite Hippotaden? Quod

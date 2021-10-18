@@ -15,7 +15,7 @@ export default function Home({ posts }) {
      
   
       
-     
+     console.log(posts);
  
      
 
@@ -93,7 +93,7 @@ export async function getStaticProps() {
     )
 
     const { data: frontmatter } = matter(markdownWithMeta)
-
+frontmatter.date=new Date().toDateString()
     return {
       slug,
       frontmatter,
