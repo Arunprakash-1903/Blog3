@@ -267,7 +267,7 @@ padding-left: 20px;
   animation: popIn 1s ease-in ;
 
   transition: all;
- visibility: visible;
+ 
  
 }
 @media (max-width: 500px) {

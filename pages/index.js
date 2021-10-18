@@ -15,7 +15,7 @@ export default function Home({ posts }) {
      
   
       
-     console.log(posts);
+    
  
      
 
