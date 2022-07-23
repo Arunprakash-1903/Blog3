@@ -6,3 +6,9 @@ export default function AddE() {
         
       })
 }
+export  function show(){
+  document.querySelector('.header__avatar').addEventListener("click",()=>{
+    document.querySelector('.header__avatar').classList.add('.show')
+
+  })
+}

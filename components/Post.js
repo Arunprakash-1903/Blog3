@@ -2,20 +2,28 @@ import Link from 'next/link'
 
 export default function Post({ post }) {
 
-
+//console.log(post);
   return (
+<Link  href={`/blog/${post?.slug}`}>
     <div className='card'>
-      <img src={post?.item?.frontmatter?.cover_image} alt='' />
-      <div className='post-date'>Posted on {post?.item?.frontmatter?.date}</div>
+      {/* <img className='card__image' src={post?.coverPhoto?.url} alt='' /> */}
+      <img className='card__image' src="https://source.unsplash.com/600x400/?computer" alt='' />
+<div className="card__footer">
 
-      <h3>{post?.item?.frontmatter?.title}</h3>
+      <h3 className='card__title'>{post?.item.title}</h3>
+      <div className='post-date'>{post?.item.datePublished}</div>
 
-      <p>{post?.item?.frontmatter?.excerpt}</p>
+              
+      {/* <p>{post?.frontmatter?.excerpt}</p> */}
+      <p className='card__excerpt'>Lorem ipsum dolor sit amet, consectetur adipisicdavrhtwrh...<a href={'/blog/${post?.slug}'}>Read more</a>
+      </p>
+     
+      </div>
 
 
-      <Link href={`/blog/${post?.item?.slug}`}>
-        <a className='btn'>Read More</a>
-      </Link>
     </div>
+    
+    
+    </Link>
   )
 }

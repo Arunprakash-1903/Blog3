@@ -1,63 +1,87 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import marked from 'marked'
+
+
 import Link from 'next/link'
 import Head from 'next/head'
+import { GraphQLClient, gql } from "graphql-request";
+
+const graphcms = new GraphQLClient(
+  "https://api-ap-south-1.graphcms.com/v2/cl581q0em4rpo01t38fzadty6/master"
+);
+
+const QUERY = gql`
+  query Post($slug: String!) {
+    post(where: { slug: $slug }) {
+      id
+      title
+      slug
+      datePublished
+      author {
+        id
+        name
+        avatar {
+          url
+        }
+      }
+      content {
+        html
+      }
+      coverPhoto {
+        id
+        url
+      }
+    }
+  }
+`;
+const SLUGLIST = gql`
+  {
+    posts {
+      slug
+    }
+  }
+`;
+
+export async function getStaticPaths() {
+  const { posts } = await graphcms.request(SLUGLIST);
+
+  console.log(posts.map((post) => ({ params: { slug: post.slug } })));
+  return {
+    paths: posts.map((post) => ({ params: { slug: post.slug } })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const slug = params.slug;
+  const data = await graphcms.request(QUERY, { slug });
+  const post = data.post;
+  return {
+    props: {
+      post,
+    },
+    revalidate: 30,
+  };
+}
 export default function PostPage({
-  frontmatter: { title, date, cover_image },
-  slug,
-  content,
+ post
 }) {
+//console.log(post);
   return (
     <>
     <Head>
 
       <title>Dev Blogs</title>
     </Head>
-      <Link href='/'>
-        <a className='btn btn-back'>Go Back</a>
-      </Link>
+      
       <div className='card card-page'>
-        <h1 className='post-title'>{title}</h1>
-        <div className='post-date'>Posted on {date}</div>
-        <img src={cover_image} alt='' />
+        <h1 className='post-title'>{post.title}</h1>
+        <div className='post-date'>Posted on {post.datePublished}</div>
+        <img src={post.coverPhoto.url} alt='' />
         <div className='post-body'>
-          <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+          <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
         </div>
       </div>
     </>
   )
 }
 
-export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join('posts'))
 
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace('.md', ''),
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false,
-  }
-}
-
-export async function getStaticProps({ params: { slug } }) {
-  const markdownWithMeta = fs.readFileSync(
-    path.join('posts', slug + '.md'),
-    'utf-8'
-  )
-
-  const { data: frontmatter, content } = matter(markdownWithMeta)
-
-  return {
-    props: {
-      frontmatter,
-      slug,
-      content,
-    },
-  }
-}

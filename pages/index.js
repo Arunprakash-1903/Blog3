@@ -1,13 +1,50 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import Post from '../components/Post'
-import { sortByDate } from '../utils'
-import NotFoundPage from '../components/NotFound'
-import { useState,useEffect } from 'react'
-import Fuse from "fuse.js"
-import HomePost from '../components/HomePost'
 
+import Post from '../components/Post'
+import { SearchIcon } from '@mui/material';
+import NotFoundPage from '../components/NotFound'
+import { useState } from 'react'
+import Fuse from "fuse.js"
+import { GraphQLClient, gql } from "graphql-request";
+import HomePost from '../components/HomePost'
+const graphcms = new GraphQLClient(
+  "https://api-ap-south-1.graphcms.com/v2/cl581q0em4rpo01t38fzadty6/master"
+);
+const QUERY = gql`
+  {
+    posts {
+      id
+      title
+      datePublished
+      slug
+      content {
+        html
+      }
+      author {
+        name
+        avatar {
+          url
+        }
+      }
+      coverPhoto {
+        publishedAt
+        createdBy {
+          id
+        }
+        url
+      }
+    }
+  }
+`;
+
+export async function getStaticProps() {
+  const { posts } = await graphcms.request(QUERY);
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 30,
+  };
+}
 export default function Home({ posts }) {
 
 
@@ -20,29 +57,35 @@ export default function Home({ posts }) {
      
 
 
-  const [query,setQuery]=useState("")
+  const [query,setquery]=useState("")
+
   const options = {
  
 
-    keys: ['frontmatter.title','frontmatter.excerpt']
+    keys: ['title']
   }
-  
+  // console.log(posts);
   const fuse = new Fuse(posts, options)
   
   
   const postResult = fuse.search(query) 
-
- 
+  //console.log(query);
+ //console.log(postResult.length)
   return (
     <div>
-     
+  
+ 
+
+
+
+
   
     <div className="search__conantiner">
-            <input className="search_input" placeholder="Search... "  value={query} onChange={(e)=>setQuery(e.target.value)} type="text" />
-                 
+            <input className="search_input" placeholder="Search... "  value={query} onChange={Event => setquery(Event.target.value)} type="text" />
+         {/* <SearchIcon/>     */}
         </div>
       
-  
+  {/* <input value="fgzf"  onChange={(e)=>setq(e.target.value)}/> */}
       <div className='posts'>
         {
         
@@ -55,8 +98,8 @@ export default function Home({ posts }) {
       <NotFoundPage/>
         
         :
-        posts.map((post, index) => (
-          <HomePost key={index} post={post} />
+        posts.map((post) => (
+          <HomePost key={post?.id} post={post} />
         ))
        
         
@@ -77,32 +120,3 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getStaticProps() {
-  // Get files from the posts dir
-  const files = fs.readdirSync(path.join('posts'))
-
-  // Get slug and frontmatter from posts
-  const posts = files.map((filename) => {
-    // Create slug
-    const slug = filename.replace('.md', '')
-
-    // Get frontmatter
-    const markdownWithMeta = fs.readFileSync(
-      path.join('posts', filename),
-      'utf-8'
-    )
-
-    const { data: frontmatter } = matter(markdownWithMeta)
-frontmatter.date=new Date().toDateString()
-    return {
-      slug,
-      frontmatter,
-    }
-  })
-
-  return {
-    props: {
-      posts: posts.sort(sortByDate),
-    },
-  }
-}
