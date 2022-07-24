@@ -53,7 +53,7 @@ const handleClose = (event, reason) => {
         <Component {...pageProps} />
       </main>
       <div className="recentPost__container">
-        
+        <h3>Recent Post</h3>
       <RecentPost  />
       </div>
       </div>

@@ -82,7 +82,7 @@ export default function Home({ posts }) {
   
     <div className="search__conantiner">
             <input className="search_input" placeholder="Search... "  value={query} onChange={Event => setquery(Event.target.value)} type="text" />
-         {/* <SearchIcon/>     */}
+         {/* <SearchIcon/>      */}
         </div>
       
   {/* <input value="fgzf"  onChange={(e)=>setq(e.target.value)}/> */}

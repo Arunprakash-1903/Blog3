@@ -265,10 +265,7 @@ padding-left: 20px;
   border-radius: 10px;
   border: none;
 }
-.search_input:focus{
-  outline:none;
-  border: 2px solid rgba(70, 131, 180, 0.527);
-}
+
 .search_button:hover{
   transform: all;
   transition-duration: .5s;
@@ -425,6 +422,4 @@ width: 1000px;
   flex-direction: column; */
   
 /*} */
-h4{
-  margin: 300px;
-}
+
