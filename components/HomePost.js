@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import {useRouter} from "next/router"
-
+import React from "react"
 export default function HomePost({ post }) {
 //   const Router = new useRouter();
 // Router.push('/blog/[slug]', `/bolg/${post.slug}`);
 //console.log(post);
   return (
-    <Link  href={`/blog/${post?.slug}`}>
+    <Link  href={`/blog/${post?.slug}`} passHref>
     <div className='card'>
       <img className='card__image' src={post?.coverPhoto?.url} alt='' />
       {/* <img className='card__image' src="https://source.unsplash.com/600x400/?computer" alt='' /> */}

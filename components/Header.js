@@ -1,6 +1,6 @@
 import { Avatar,Button,Snackbar,IconButton } from '@mui/material';
 import Link from 'next/link'
-
+import React from "react"
 
 import { signInWithPopup } from 'firebase/auth';
 import {auth,provider} from "../firebase/firebsae"
@@ -18,15 +18,15 @@ export default function Header({fun}) {
   return (
     <>
     <header>
-      <Link href="/ " >
+      <Link href="/ " passHref="">
         <h2>Top Blogs</h2>
       </Link>
      <nav>
       <ul className='nav__links'>
-      <Link href="/ " >
+      <Link href="/ " passHref>
     <li> <a href="#">Home</a></li>
     </Link>
-    <Link href="/About"><li><a href="#">About </a></li></Link>
+    <Link href="/About" passHref><li><a href="#">About </a></li></Link>
     <li><a href="#">Contact </a></li>
    
    {user?<Button variant="text" onClick={fun}>

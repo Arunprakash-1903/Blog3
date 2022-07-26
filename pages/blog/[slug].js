@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import { GraphQLClient, gql } from "graphql-request";
+import React from "react"
 
 const graphcms = new GraphQLClient(
   "https://api-ap-south-1.graphcms.com/v2/cl581q0em4rpo01t38fzadty6/master"

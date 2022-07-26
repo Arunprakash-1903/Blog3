@@ -45,10 +45,10 @@ export default function RecentPost() {
     <>
      {/* <h4>Recent Post</h4> */}
     {/* {console.log(relatedPosts)} */}
-    {relatedPosts.map((relatedPost)=>(
+    {relatedPosts.map((relatedPost,index)=>(
      
 
-<Link  href={`/blog/${relatedPost?.slug}`}>
+<Link key={index}  href={`/blog/${relatedPost?.slug}`} passHref>
 <Card className='card' sx={{ maxWidth: 350 }}>
 <CardActionArea className='card__area'>
 {console.log(relatedPost)}

@@ -1,5 +1,6 @@
 import Header from '../components/Header'
 import '../styles/globals.css'
+import React from "react"
 import MuiAlert from '@material-ui/lab/Alert';
 // import 'bootstrap/dist/css/bootstrap.css'
 import Footer from '../components/footer'

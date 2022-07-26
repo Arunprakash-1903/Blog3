@@ -1,6 +1,7 @@
 
 import Post from '../components/Post'
 import { SearchIcon } from '@mui/material';
+import React from "react"
 import NotFoundPage from '../components/NotFound'
 import { useState } from 'react'
 import Fuse from "fuse.js"
