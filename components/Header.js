@@ -18,7 +18,7 @@ export default function Header({fun}) {
   return (
     <>
     <header>
-      <Link href="/ " passHref="">
+      <Link href="/ " passHref>
         <h2>Top Blogs</h2>
       </Link>
      <nav>
